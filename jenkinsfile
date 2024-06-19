@@ -5,11 +5,15 @@
           stage("build & sonarqub Analysis") {
             agent any
             steps {
-               def scannerHome = tool 'SonarQube Scanner'
-              withSonarQubeEnv('sonar') {
-               sh "${scannerHome}/bin/sonar-scanner"
-                sh 'mvn clean package sonar:sonar'
-              }
+                    script {
+                    def scannerHome = tool 'SonarQube Scanner'
+                    withSonarQubeEnv('SonarQube Server Name') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
+
+                   //withSonarQubeEnv('sonar') {
+               // sh 'mvn clean package sonar:sonar'
+             // }
             }
           }
         }
