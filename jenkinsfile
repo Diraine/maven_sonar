@@ -10,7 +10,6 @@
                     withSonarQubeEnv('SonarQube Server Name') {
                         sh "${scannerHome}/bin/sonar-scanner"
                     }
-
                    //withSonarQubeEnv('sonar') {
                // sh 'mvn clean package sonar:sonar'
              // }
