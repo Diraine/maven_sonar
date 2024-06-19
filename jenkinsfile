@@ -1,19 +1,16 @@
-     pipeline {
-        agent none
-        stages {
-         
-          stage("build & sonarqub Analysis") {
+pipeline {
+    agent none
+    stages {
+        stage('Build & SonarQube Analysis') {
             agent any
             steps {
-                    script {
+                script {
                     def scannerHome = tool 'SonarQube Scanner'
-                    withSonarQubeEnv('SonarQube Server Name') {
+                    withSonarQubeEnv('sonar') {
                         sh "${scannerHome}/bin/sonar-scanner"
                     }
-                   //withSonarQubeEnv('sonar') {
-               // sh 'mvn clean package sonar:sonar'
-             // }
+                }
             }
-          }
         }
-      }
+    }
+}
